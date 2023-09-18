@@ -1,0 +1,28 @@
+<!-- Resources -->
+<h2>Continentes</h2>
+<p>Dele click en un continente para filtrar la información:</p>
+
+<div class="card-container">
+  <button class="card card-small" (click)="regionFilter($event);">África</button>
+  <button class="card card-small" (click)="regionFilter($event);"><span>Asia</span></button>
+  <button class="card card-small" (click)="regionFilter($event);"><span>América</span></button>
+  <button class="card card-small" (click)="regionFilter($event);"><span>Europa</span></button>
+  <button class="card card-small" (click)="regionFilter($event);"><span>Oceanía</span></button>
+  <button class="card card-small" (click)="regionFilter($event);"><span>Todos</span></button>
+</div>
+<!-- Next Steps -->
+<h2>Países</h2>
+<p *ngIf="region">Desglose de información por la región de {{region}}.</p>
+<p *ngIf="!region">Desglose de información todas las regiones.</p>
+
+<div *ngFor="let country of listCountry" class="p-3 m-5 text-center bg-white rounded shadow">
+  <img [src]="country.flags.png">
+  <h3>{{country.translations.spa.official}} - {{country.translations.spa.common}}</h3>
+  <h4>Código: {{country.cioc}}</h4>
+  <h4>Capital: {{country.capital}}</h4>
+  <h4>Región: {{country.region}} | {{country.subregion}}</h4>
+</div>
+
+<div *ngIf="cargando">
+  <p>Cargando información, por favor espere...</p>
+</div>
